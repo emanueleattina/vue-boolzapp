@@ -76,7 +76,7 @@ var app = new Vue ({
                 ],
             },
             {
-                name: 'Luisa',
+                name: 'Luiso',
                 avatar: '_4',
                 visible: true,
                 lastMessage: '',
