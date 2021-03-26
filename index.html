@@ -7,7 +7,7 @@
 
     <!-- link a google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- link a font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
@@ -23,21 +23,44 @@
         <div class="background">
             <!-- <div class="background-top"> -->
                 <div class="container">
+
+                    <!-- inizio della sidebar -->
                     <div class="sidebar">
+                        <!-- barra superiore all'interno della sidebar -->
                         <div class="topbar-sidebar">
                             <img class="avatar-img" src="assets/img/avatar_io.jpg" >
-                            
                             <div class="topbar-icons">
                                 <i class="fas fa-circle-notch"></i>
                                 <i class="fas fa-comment"></i>
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
-                        
+
+                        <div class="sidebar-chat" v-for="contatto in contacts">
+                            <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
+                            <div class="avatar-name">
+                                <span class="name"> {{ contatto.name }} </span>
+                                <span class="last-text"> {{ contatto.lastMessage }} </span>
+                            </div>
+
+                        </div>
                     </div>
+
                     <div class="main">
                         <div class="topbar-main">
+                            <div class="avatar-info">
+                                <img class="avatar-img" src="assets/img/avatar_io.jpg">
+                                <div class="avatar-name">
+                                    <span class="name">Michela</span>
+                                    <span class="last-seen">Ultimo accesso oggi alle 11:25</span>
+                                </div>
+                            </div>
                             
+                            <div class="topbar-icons">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
                         </div>
 
                     </div>
