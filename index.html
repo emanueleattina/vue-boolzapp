@@ -35,35 +35,39 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
-
                         <div class="sidebar-chat" v-for="contatto in contacts">
                             <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
                             <div class="avatar-name">
                                 <span class="name"> {{ contatto.name }} </span>
-                                <span class="last-text"> {{ contatto.lastMessage }} </span>
+                                <span class="last-text"> {{ lastMsg }} {{ contatto.lastMessage }} </span>
                             </div>
-
                         </div>
                     </div>
 
-                    <div class="main">
-                        <div class="topbar-main">
-                            <div class="avatar-info">
-                                <img class="avatar-img" src="assets/img/avatar_io.jpg">
-                                <div class="avatar-name">
-                                    <span class="name">Michela</span>
-                                    <span class="last-seen">Ultimo accesso oggi alle 11:25</span>
+                    <div class="main-container">
+                        <!-- <div class="main-content" v-for="contatto in contacts"> -->
+                        <div class="main-content">
+                            <div class="topbar-main">
+                                <div class="avatar-info">
+                                    <img class="avatar-img" :src="'assets/img/avatar_1.jpg'">
+                                    <div class="avatar-name">
+                                        <span class="name">Michele</span>
+                                        <span class="last-seen">Ultimo accesso oggi alle 11:25</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="topbar-icons">
+                                    <i class="fas fa-search"></i>
+                                    <i class="fas fa-paperclip"></i>
+                                    <i class="fas fa-ellipsis-v"></i>
                                 </div>
                             </div>
-                            
-                            <div class="topbar-icons">
-                                <i class="fas fa-search"></i>
-                                <i class="fas fa-paperclip"></i>
-                                <i class="fas fa-ellipsis-v"></i>
+                            <div class="main-chat">
+                                
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             <!-- </div> -->
         </div>

@@ -35,7 +35,7 @@
 }
 
 .topbar-sidebar, .topbar-main {
-    background-color: rgba(255, 0, 0, 0.5);
+    /* background-color: rgba(255, 0, 0, 0.5); */
     /* background-color: #ECEDED; */
     height: 80px;
     padding: 7px 7px;
@@ -48,10 +48,15 @@
 .sidebar-chat {
     height: 70px;
     width: 100%;
-    background-color: rgba(255, 0, 0, 0.25);
-    border: 1px solid black;
+    /* background-color: rgba(255, 0, 0, 0.25); */
+    /* border: 1px solid black; */
+    background-color: #f1f1f1;
     padding: 7px 7px;
     display: flex;
+}
+
+.avatar-name .last-text {
+    font-size: 14.5px;
 }
 
 .avatar-info {
@@ -90,9 +95,18 @@
     padding-left: 15px;
 }
 
-.main {
+.main-container {
     width: calc(100% - (100% / 3));
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.main-content {
+    height: 100%;
+}
+
+.main-chat {
+    background: url('../img/mine.jpg');
+    height: 100%;
 }

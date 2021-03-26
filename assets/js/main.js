@@ -10,7 +10,7 @@ var app = new Vue ({
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
-                lastMessage: lastMessage(),
+                lastMessage: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -33,6 +33,7 @@ var app = new Vue ({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
+                lastMessage: '',
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -55,6 +56,7 @@ var app = new Vue ({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
+                lastMessage: '',
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -77,6 +79,7 @@ var app = new Vue ({
                 name: 'Luisa',
                 avatar: '_4',
                 visible: true,
+                lastMessage: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -91,16 +94,19 @@ var app = new Vue ({
                 ],
             },
         ]
-        
-        
-
     },
     computed: {
-        lastMessage: function() {
-            return this.messages[this.messages.length - 1].text;
+        lastMsg: function () {
+            this.contacts.forEach((messaggio, index) => {
+                this.contacts[index].lastMessage = this.contacts[index].messages[this.contacts[index].messages.length - 1].text;
+
+                console.log(messaggio);
+                console.log(index);
+                console.log(this.lastMessage);
+            });
         }
     },
     methods: {
-
+        
     }
 });
