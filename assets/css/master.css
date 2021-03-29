@@ -258,6 +258,14 @@ input.write-chat {
     .sidebar.active {
         display: flex
     }
+    
+    .sidebar-chat:hover {
+        background-color: #323739;
+    }
+    
+    .sidebar-chat.active {
+        background-color: #131c21;
+    }
 
     .main-container {
         width: 100%;
