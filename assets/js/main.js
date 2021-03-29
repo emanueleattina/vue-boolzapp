@@ -5,12 +5,13 @@
 var app = new Vue ({
     el: '#root',
     data: {
+        index: 0,
+        inputMessage: '',
         contacts: [
             {
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
-                lastMessage: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -32,8 +33,7 @@ var app = new Vue ({
             {
                 name: 'Fabio',
                 avatar: '_2',
-                visible: true,
-                lastMessage: '',
+                visible: false,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -55,8 +55,7 @@ var app = new Vue ({
             {
                 name: 'Samuele',
                 avatar: '_3',
-                visible: true,
-                lastMessage: '',
+                visible: false,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -78,8 +77,7 @@ var app = new Vue ({
             {
                 name: 'Luiso',
                 avatar: '_4',
-                visible: true,
-                lastMessage: '',
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -96,17 +94,36 @@ var app = new Vue ({
         ]
     },
     computed: {
-        lastMsg: function () {
-            this.contacts.forEach((messaggio, index) => {
-                this.contacts[index].lastMessage = this.contacts[index].messages[this.contacts[index].messages.length - 1].text;
+        // lastMsg: function () {    
+        //     this.contacts.forEach((messaggio, index) => {
+        //         this.contacts[index].lastMessage = this.contacts[index].messages[this.contacts[index].messages.length - 1].text;
 
-                console.log(messaggio);
-                console.log(index);
-                console.log(this.lastMessage);
-            });
-        }
+        //         console.log(messaggio);
+        //         console.log(index);
+        //         console.log(this.lastMessage);
+        //     });
+        // }
     },
     methods: {
-        
+        dateMessage: function(date) {
+            let data = new Date(date);
+            let ore = data.getHours();
+            let minuti = data.getMinutes();
+            return (`${ore}:${minuti}`)
+        },
+        setActive: function() {
+            this.contacts.visible = !this.contacts.visible;
+        },
+        sendMessage: function() {
+            if(this.inputMessage != '') {
+                let newMessage = {
+                    date: '10/01/2020 15:30:55',
+                    text: this.inputMessage,
+                    status: 'sent'
+                }
+            this.contacts[index].messages.push(newMessage);
+            this.inputMessage = '';
+            }
+        },
     }
 });

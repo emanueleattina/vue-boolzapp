@@ -1,3 +1,5 @@
+/* LAYOUT */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +8,10 @@
     color: #fff;
 }
 
+/* FINE LAYOUT */
+
 .background {
-    background-color: #D6DBD6;
+    background-color: #0e151a;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,7 +30,10 @@
     width: 80vw;
     background-color: #2a2f32;
     display: flex;
+    border-radius: 10px;
 }
+
+/* SIDEBAR */
 
 .sidebar {
     width: calc(100% / 3);
@@ -37,12 +44,16 @@
 }
 
 .topbar-sidebar {
+    border-top-left-radius: 10px;
+
+}
+
+.topbar-main {
+    border-top-right-radius: 10px;
 
 }
 
 .topbar-sidebar, .topbar-main {
-    /* background-color: rgba(255, 0, 0, 0.5); */
-    /* background-color: #ECEDED; */
     height: 80px;
     padding: 15px 15px;
     background: #2a2f32;
@@ -61,8 +72,20 @@
     display: flex;
 }
 
+.sidebar-chat:hover {
+    background-color: #323739;
+}
+
+.sidebar-chat.active {
+    background-color: #323739;
+}
+
+/* FINE SIDEBAR */
+
+/* MAIN */
+/* BARRA AVATAR E NOME */
 .avatar-name .last-text {
-    font-size: 14.5px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.75);
 }
 
@@ -84,7 +107,7 @@
 
 .avatar-name .name {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .avatar-name .last-seen {
@@ -101,6 +124,7 @@
     font-size: 20px;
     padding: 0 10px;
 }
+/* FINE BARRA AVATAR E NOME */
 
 .main-container {
     width: calc(100% - (100% / 3));
@@ -112,6 +136,12 @@
 .main-content {
     height: 100%;
     background: #131c21;
+    border-top-right-radius: 10px;
+    display: none;
+}
+
+.main-content.active {
+    display: block;
 }
 
 .main-chat {
@@ -122,22 +152,20 @@
     padding: 15px 50px;
 }
 
-.message-sent, .message-received {
+.message-baloon, .message-baloon {
     color: #fff;
     padding: 15px;
     border-radius: 10px;
     font-size: 17px;
+    margin-bottom: 10px;
 }
 
-.message-sent .message, .message-received .message {
-}
-
-.message-sent {
+.sent {
     align-self: flex-end;
     background: #056162;
 }
 
-.message-received {
+.received {
     align-self: flex-start;
     background: #262d31;
 }
@@ -149,14 +177,18 @@
     padding-right: 1px;
 }
 
+/* FINE MAIN */
+
+/* FOOTER */
+
 .main-footer {
     height: 80px;
     background-color: #1e2428;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom-right-radius: 10px;
     padding: 10px 20px;
-    background: #1e2428;
 }
 
 .main-footer i {
@@ -173,3 +205,5 @@ input.write-chat {
     background: #33383b;
     font-size: 16px;
 }
+
+/* FINE FOOTER */

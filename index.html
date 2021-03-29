@@ -21,71 +21,86 @@
     <div id="root">
         
         <div class="background">
-            <!-- <div class="background-top"> -->
-                <div class="container">
+            <div class="container">
 
-                    <!-- inizio della sidebar -->
-                    <div class="sidebar">
-                        <!-- barra superiore all'interno della sidebar -->
-                        <div class="topbar-sidebar">
-                            <img class="avatar-img" src="assets/img/avatar_io.jpg" >
-                            <div class="topbar-icons">
-                                <i class="fas fa-circle-notch"></i>
-                                <i class="fas fa-comment"></i>
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                        <div class="sidebar-chat" v-for="contatto in contacts">
-                            <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
-                            <div class="avatar-name">
-                                <span class="name"> {{ contatto.name }} </span>
-                                <span class="last-text"> {{ lastMsg }} {{ contatto.lastMessage }} </span>
-                            </div>
+                <!-- inizio della sidebar -->
+                <div class="sidebar">
+                    <!-- barra superiore all'interno della sidebar -->
+                    <div class="topbar-sidebar">
+                        <img class="avatar-img" src="assets/img/avatar_io.jpg" >
+                        <div class="topbar-icons">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
 
-                    <div class="main-container">
-                        <!-- <div class="main-content" v-for="contatto in contacts"> -->
-                        <div class="main-content">
-                            <div class="topbar-main">
-                                <div class="avatar-info">
-                                    <img class="avatar-img" :src="'assets/img/avatar_1.jpg'">
-                                    <div class="avatar-name">
-                                        <span class="name">Michele</span>
-                                        <span class="last-seen">Ultimo accesso oggi alle 11:25</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="topbar-icons">
-                                    <i class="fas fa-search"></i>
-                                    <i class="fas fa-paperclip"></i>
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </div>
-                            </div>
-                            <div class="main-chat">
-                                
-                                <div class="message-sent">
-                                    <span class="message">Ciao Michele</span>
-                                    <span class="message-hour">21:45</span>
-                                </div>
-                                <div class="message-received">
-                                    <span class="message">Ciao Emanuele</span>
-                                    <span class="message-hour">21:47</span>
+                    <!-- sidebar lista contatti -->
+                    <div
+                    class="sidebar-chat"
+                    v-for="(contatto, index) in contacts"
+                    :class="[(contatto.visible == true) ? 'active' : '']"
+                    @click="setActive">
+
+                        <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
+                        <div class="avatar-name">
+                            <span class="name"> {{ contatto.name }} </span>
+                            <span class="last-text"> {{ contatto.messages[contatto.messages.length - 1].text }} </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- inizio della chat a destra -->
+                <div class="main-container">
+
+                    <!-- barra superiore della chat attiva -->
+                    <div
+                    class="main-content active"
+                    v-for="(contatto, index) in contacts">
+                        <div class="topbar-main">
+                            <div class="avatar-info">
+                                <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
+                                <div class="avatar-name">
+                                    <span class="name"> {{ contatto.name }} </span>
+                                    <span class="last-seen">Ultimo accesso oggi alle {{ dateMessage(contatto.messages[contatto.messages.length - 1].date) }}</span>
                                 </div>
                             </div>
                             
+                            <div class="topbar-icons">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
                         </div>
-                        <div class="main-footer">
-                            <i class="far fa-grin"></i>
-                            <input type="text" class="write-chat" placeholder="Scrivi un messaggio">
-                            <i class="fas fa-microphone"></i>
+                        
+                        <!-- chat attiva -->
+                        <div class="main-chat">
+                            
+                            <div
+                            class="message-baloon"
+                            v-for="messaggio in contacts[index].messages"
+                            :class="(messaggio.status == 'sent') ? 'sent' : 'received' ">
+                                <span class="message"> {{ messaggio.text }} </span>
+                                <span class="message-hour"> {{ dateMessage(messaggio.date) }} </span>
+                            </div>
                         </div>
-
                         
                     </div>
 
+                    <!-- footer per inviare i messaggi-->
+                    <div class="main-footer">
+                        <i class="far fa-grin"></i>
+                        <input type="text"
+                        class="write-chat"
+                        placeholder="Scrivi un messaggio"
+                        @keyup.enter="sendMessage">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+
+                    
                 </div>
-            <!-- </div> -->
+
+            </div>
         </div>
 
 
