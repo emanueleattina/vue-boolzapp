@@ -80,6 +80,26 @@
     background-color: #323739;
 }
 
+.searchbar-sidebar {
+    height: 51px;
+    background-color: #131c21;
+    border-bottom: 1px solid #30383d;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input.write-search {
+    width: 95%;
+    height: 80%;
+    border: none;
+    border-radius: 30px;
+    padding-left: 15px;
+    background: #33383b;
+    font-size: 16px;
+}
+
 /* FINE SIDEBAR */
 
 /* MAIN */

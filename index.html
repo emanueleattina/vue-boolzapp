@@ -35,10 +35,18 @@
                         </div>
                     </div>
 
+                    <div class="searchbar-sidebar">
+                        <input
+                        type="text"
+                        class="write-search"
+                        placeholder="Cerca"
+                        v-model="inputSearch">
+                    </div>
+
                     <!-- sidebar lista contatti -->
                     <div
                     class="sidebar-chat"
-                    v-for="(contatto, index) in contacts"
+                    v-for="(contatto, index) in searchList"
                     :class="index === contactActive ? 'active' : ''"
                     @click="setActive(index)">
 
@@ -92,9 +100,10 @@
                     <div class="main-footer">
                         <i class="far fa-grin"></i>
                         <input type="text"
+                        v-model="inputMessage"
                         class="write-chat"
                         placeholder="Scrivi un messaggio"
-                        @keyup.enter="sendMessage">
+                        @keyup.enter="sendMessage(contactActive)">
                         <i class="fas fa-microphone"></i>
                     </div>
 
