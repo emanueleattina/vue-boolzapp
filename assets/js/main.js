@@ -27,6 +27,7 @@ var app = new Vue ({
         },
         setActive: function(index) {
             this.contactActive = index;
+            this.showChatList = false;
         },
         sendMessage: function(contactActive) {
             if(this.inputMessage != '') {

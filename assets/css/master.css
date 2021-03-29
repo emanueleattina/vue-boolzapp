@@ -268,7 +268,7 @@ input.write-chat {
         display: none;
     }
     .main-container.active {
-        display: flexå;
+        display: flex;
     }
 
     .topbar-sidebar {
