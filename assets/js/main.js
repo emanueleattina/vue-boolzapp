@@ -9,6 +9,7 @@ var app = new Vue ({
         contactActive: 0,
         inputMessage: '',
         inputSearch: '',
+        showChatList: false,
     },
     computed: {
         searchList() {

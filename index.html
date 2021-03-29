@@ -24,7 +24,8 @@
             <div class="container">
 
                 <!-- inizio della sidebar -->
-                <div class="sidebar">
+                <div class="sidebar"
+                :class="(showChatList == true) ? 'active' : ''">
                     <!-- barra superiore all'interno della sidebar -->
                     <div class="topbar-sidebar">
                         <img class="avatar-img" src="assets/img/avatar_io.jpg" >
@@ -59,7 +60,8 @@
                 </div>
 
                 <!-- inizio della chat a destra -->
-                <div class="main-container">
+                <div class="main-container"
+                :class="(showChatList == true) ? 'inactive' : '' ">
 
                     <!-- barra superiore della chat attiva -->
                     <div
@@ -68,6 +70,13 @@
                     v-if="index == contactActive">
                         <div class="topbar-main">
                             <div class="avatar-info">
+
+                                <!-- click sulla freccia per tornare alla lista delle chat -->
+                                <div
+                                class="undo-icon"
+                                @click="showChatList = true">
+                                    <i class="fas fa-chevron-left"></i>
+                                </div>
                                 <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
                                 <div class="avatar-name">
                                     <span class="name"> {{ contatto.name }} </span>
