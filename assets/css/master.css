@@ -190,6 +190,46 @@ input.write-search {
     border-radius: 10px;
     font-size: 17px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.toggle-hour {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.toggle-hour i {
+    font-size: 13px;
+    padding-bottom: 3px;
+}
+
+.options-panel {
+    position: absolute;
+    right: 0;
+    bottom: -80px;
+    text-align: right;
+    z-index: 10;
+    background-color: #2a2f32;
+    width: 100%;
+    border-radius: 5px;
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+}
+
+.options-panel.active {
+    display: flex;
+}
+
+.info, .delete-msg {
+    padding: 10px 10px;
+}
+
+.info:hover , .delete-msg:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sent {

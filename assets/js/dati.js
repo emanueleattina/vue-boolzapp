@@ -27,17 +27,17 @@ contacts = [
         visible: false,
         messages: [
             {
-                date: '20/03/2020 16:30:00',
+                date: '10/01/2020 15:30:55',
                 text: 'Ciao come stai?',
                 status: 'sent'
             },
             {
-                date: '20/03/2020 16:30:55',
+                date: '10/01/2020 15:50:00',
                 text: 'Bene grazie! Stasera ci vediamo?',
                 status: 'received'
             },
             {
-                date: '20/03/2020 16:35:00',
+                date: '10/01/2020 16:15:22',
                 text: 'Mi piacerebbe ma devo andare a fare la spesa.',
                 status: 'sent'
             }
@@ -49,17 +49,17 @@ contacts = [
         visible: false,
         messages: [
             {
-                date: '28/03/2020 10:10:40',
+                date: '10/01/2020 15:30:55',
                 text: 'La Marianna va in campagna',
                 status: 'received'
             },
             {
-                date: '28/03/2020 10:20:10',
+                date: '10/01/2020 15:50:00',
                 text: 'Sicuro di non aver sbagliato chat?',
                 status: 'sent'
             },
             {
-                date: '28/03/2020 16:15:22',
+                date: '10/01/2020 16:15:22',
                 text: 'Ah scusa!',
                 status: 'received'
             }

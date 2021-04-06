@@ -36,6 +36,7 @@
                         </div>
                     </div>
 
+                    <!-- sidebar barra di ricerca -->
                     <div class="searchbar-sidebar">
                         <input
                         type="text"
@@ -99,8 +100,27 @@
                             v-for="messaggio in contacts[index].messages"
                             :class="(messaggio.status == 'sent') ? 'sent' : 'received' ">
                                 <span class="message"> {{ messaggio.text }} </span>
-                                <span class="message-hour"> {{ dateMessage(messaggio.date) }} </span>
+                                <div class="toggle-hour">
+                                    <i
+                                    class="fas fa-chevron-down"
+                                    @click="showPanel(messaggio)"
+                                    ></i>
+                                    <span class="message-hour"> {{ dateMessage(messaggio.date) }} </span>
+                                </div>
+                                <div
+                                class="options-panel"
+                                :class="(isActive == true) ? 'active' : '' ">
+                                    <div class="info">
+                                        <span>Info</span>
+                                    </div>
+                                    <div
+                                    @click="deleteMessage(messaggio)" class="delete-msg">
+                                        <span>Elimina</span>
+                                    </div>
+                                </div>
+                                
                             </div>
+                            
                         </div>
                         
                     </div>

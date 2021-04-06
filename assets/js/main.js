@@ -1,7 +1,3 @@
-// milestone 1
-    // 1 - replica deòòa grafoca con possibilità di avere messaggi scritti dall'utente (verdi) e dall'interlocutore (bianchi) assegnando due classi css diverse
-    // 2 - visualizzazione dimanica delal lista contatti tramite v-for usando nome e immagine di ogni contatto
-
 var app = new Vue ({
     el: '#root',
     data: {
@@ -9,12 +5,15 @@ var app = new Vue ({
         contactActive: 0,
         inputMessage: '',
         inputSearch: '',
+        index: 0,
         showChatList: false,
+        messageIndex: null,
+        isActive: false,
     },
     computed: {
         searchList() {
             return this.contacts.filter(contatto => {
-                return contatto.name.toLowerCase().includes(this.inputSearch.toLowerCase())
+                return contatto.name.toLowerCase().includes(this.inputSearch.toLowerCase());
             });
         }
       },
@@ -32,15 +31,17 @@ var app = new Vue ({
         sendMessage: function(contactActive) {
             if(this.inputMessage != '') {
                 let newMessage = {
-                    date: '10/01/2020 15:30:55',
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     text: this.inputMessage,
                     status: 'sent'
                 }
                 this.contacts[contactActive].messages.push(newMessage);
                 this.inputMessage = '';
+
+                // !! cambiare in arrow function
                 setTimeout(function() {
                     let newMessage = {
-                        date: '10/01/2020 15:30:55',
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         text: 'ok',
                         status: 'received'
                     }
@@ -48,5 +49,12 @@ var app = new Vue ({
                 }, 1000);
             }
         },
+        showPanel: function(index) {
+            this.isActive = !this.isActive;
+        },
+        deleteMessage: function(messaggio) {
+            let i = this.contacts.messages.indexOf(messaggio);
+            this.contacts.messages[i].splice(i, 1);
+        }
     }
 });
