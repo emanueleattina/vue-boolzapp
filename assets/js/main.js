@@ -6,16 +6,15 @@ var app = new Vue ({
         inputMessage: '',
         inputSearch: '',
         index: 0,
+        indexMsg: null,
         showChatList: false,
-        messageIndex: null,
-        isActive: false,
     },
     computed: {
-        searchList() {
-            return this.contacts.filter(contatto => {
-                return contatto.name.toLowerCase().includes(this.inputSearch.toLowerCase());
-            });
-        }
+        // searchList() {
+        //     return this.contacts.filter(contatto => {
+        //         return contatto.name.toLowerCase().includes(this.inputSearch.toLowerCase());
+        //     });
+        // }
       },
     methods: {
         dateMessage: function(date) {
@@ -49,12 +48,24 @@ var app = new Vue ({
                 }, 1000);
             }
         },
-        showPanel: function(index) {
-            this.isActive = !this.isActive;
+        showPanel: function(indexMsg) {
+            this.contacts[this.index].messages = this.contacts[this.index].messages.map((messaggio, i) => {
+                if(indexMsg == i) {
+                    return {
+                        ...messaggio,
+                        showPanel: true,
+                    }
+                } else {
+                    return {
+                        ...messaggio,
+                        showPanel: false,
+                    }
+                }
+            });
+            // this.isActive = !this.isActive;
         },
-        deleteMessage: function(messaggio) {
-            let i = this.contacts.messages.indexOf(messaggio);
-            this.contacts.messages[i].splice(i, 1);
-        }
+        deleteMessage: function(indexMsg) {
+            this.contacts[this.index].messages.splice(indexMsg, 1);
+        },
     }
 });

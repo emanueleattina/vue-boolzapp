@@ -48,15 +48,21 @@
                     <!-- sidebar lista contatti -->
                     <div
                     class="sidebar-chat"
-                    v-for="(contatto, index) in searchList"
+                    v-for="(contatto, index) in contacts"
+                    v-if="contatto.name.toLowerCase().includes(inputSearch.toLowerCase())"
                     :class="index === contactActive ? 'active' : ''"
                     @click="setActive(index)">
 
                         <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
                         <div class="avatar-name">
                             <span class="name"> {{ contatto.name }} </span>
-                            <span class="last-text"> {{ contatto.messages[contatto.messages.length - 1].text }} </span>
+                            <span class="last-text">
+                                <span v-if="contatto.messages.length"> {{ contatto.messages[contatto.messages.length - 1].text }}
+                                </span>
+                                
+                            </span>
                         </div>
+                        <span class="last-hour" v-if="contatto.messages.length"> {{ dateMessage(contatto.messages[contatto.messages.length - 1].date )}} </span>
                     </div>
                 </div>
 
@@ -81,7 +87,11 @@
                                 <img class="avatar-img" :src="'assets/img/avatar' + contatto.avatar + '.jpg'">
                                 <div class="avatar-name">
                                     <span class="name"> {{ contatto.name }} </span>
-                                    <span class="last-seen">Ultimo accesso oggi alle {{ dateMessage(contatto.messages[contatto.messages.length - 1].date) }}</span>
+                                    <span class="last-seen">Ultimo accesso oggi alle 
+                                        <span v-if="contatto.messages.length">
+                                            {{ dateMessage(contatto.messages[contatto.messages.length - 1].date )}}
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                             
@@ -97,24 +107,27 @@
                             
                             <div
                             class="message-baloon"
-                            v-for="messaggio in contacts[index].messages"
+                            v-for="(messaggio, i) in contacts[index].messages"
                             :class="(messaggio.status == 'sent') ? 'sent' : 'received' ">
                                 <span class="message"> {{ messaggio.text }} </span>
                                 <div class="toggle-hour">
                                     <i
                                     class="fas fa-chevron-down"
-                                    @click="showPanel(messaggio)"
+                                    @click.stop="indexMsg = i"
                                     ></i>
                                     <span class="message-hour"> {{ dateMessage(messaggio.date) }} </span>
                                 </div>
+
+                                <!-- pannello di opzioni per cancellare messaggio -->
                                 <div
                                 class="options-panel"
-                                :class="(isActive == true) ? 'active' : '' ">
-                                    <div class="info">
+                                :class="(indexMsg == i) ? 'active' : '' ">
+                                    <div 
+                                    class="info">
                                         <span>Info</span>
                                     </div>
                                     <div
-                                    @click="deleteMessage(messaggio)" class="delete-msg">
+                                    @click="deleteMessage(i)" class="delete-msg">
                                         <span>Elimina</span>
                                     </div>
                                 </div>

@@ -69,6 +69,7 @@
     background-color: #131c21;
     padding: 15px 15px;
     display: flex;
+    position: relative;
 }
 
 .sidebar-chat:hover {
@@ -106,6 +107,13 @@ input.write-search {
 .avatar-name .last-text {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.75);
+}
+
+.last-hour {
+    position: absolute;
+    right: 15px;
+    font-size: 13px;
+    opacity: 0.75;
 }
 
 .avatar-info {
@@ -169,6 +177,7 @@ input.write-search {
     height: 100%;
     background: #131c21;
     border-top-right-radius: 10px;
+    position: relative;
     display: none;
 }
 
@@ -182,6 +191,7 @@ input.write-search {
     display: flex;
     flex-direction: column;
     padding: 15px 50px;
+    overflow: auto;
 }
 
 .message-baloon, .message-baloon {
@@ -209,7 +219,7 @@ input.write-search {
 .options-panel {
     position: absolute;
     right: 0;
-    bottom: -80px;
+    bottom: -82px;
     text-align: right;
     z-index: 10;
     background-color: #2a2f32;
